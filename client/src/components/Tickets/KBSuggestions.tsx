@@ -1,10 +1,4 @@
-import React from 'react';
 import { BookOpen, ExternalLink } from 'lucide-react';
-
-interface Suggestion {
-  id: string;
-  title: string;
-}
 
 interface KBSuggestionsProps {
   query: string;

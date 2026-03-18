@@ -1,5 +1,4 @@
-import React from 'react';
-import { LayoutDashboard, Ticket, BarChart, Users, Settings, ConfirmationNumber } from 'lucide-react';
+import { LayoutDashboard, Ticket, BarChart, Users, Settings } from 'lucide-react';
 
 const Sidebar = () => {
   return (
