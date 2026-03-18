@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceitos de Interface - ServiceDesk</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .card { background: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 45%; min-width: 350px; padding: 20px; border-top: 5px solid #0056b3; }
+        h2 { color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .mockup { background: #eee; height: 200px; border-radius: 4px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: #666; font-style: italic; border: 1px dashed #ccc; }
+        .pros-cons { font-size: 0.9em; }
+        .pros { color: #2d6a4f; }
+        .cons { color: #a4161a; }
+        ul { padding-left: 20px; }
+        .recommendation { background: #e7f3ff; padding: 10px; border-radius: 4px; border-left: 5px solid #0056b3; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Abordagens de Interface e UX</h1>
+    <div class="container">
+        <!-- Abordagem 1 -->
+        <div class="card">
+            <h2>1. Portal de Autoatendimento Clássico</h2>
+            <p>Focado em separação clara e direta das funções.</p>
+            <div class="mockup">
+                [ Layout: Header Azul | Menu Lateral | Cards Grandes para 'Tickets' e 'Base de Conhecimento' ]
+            </div>
+            <div class="pros-cons">
+                <p class="pros"><strong>Prós:</strong> Extrema clareza, fácil de navegar, ideal para usuários que já sabem o que querem.</p>
+                <p class="cons"><strong>Contras:</strong> Menos proativo em sugerir soluções antes da abertura do ticket.</p>
+            </div>
+        </div>
+
+        <!-- Abordagem 2 -->
+        <div class="card">
+            <h2>2. Interface Inteligente (Search-First)</h2>
+            <p>Focado em resolver o problema antes mesmo de gerar um ticket.</p>
+            <div class="mockup">
+                [ Layout: Header Azul | Barra de Busca Gigante Central | Resultados de FAQ | Botão 'Ainda preciso de ajuda' ]
+            </div>
+            <div class="pros-cons">
+                <p class="pros"><strong>Prós:</strong> Reduz drasticamente a carga dos técnicos, educa o usuário, interface moderna.</p>
+                <p class="cons"><strong>Contras:</strong> Adiciona um passo extra para quem precisa apenas ver o status de um ticket antigo.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="recommendation" style="max-width: 900px; margin: 20px auto;">
+        <strong>Minha Recomendação:</strong> Sugiro uma <strong>Abordagem Híbrida</strong>. Um Dashboard que mostre os tickets ativos (para rapidez) mas com uma busca global proeminente que sugira artigos da Base de Conhecimento em tempo real.
+    </div>
+</body>
+</html>
