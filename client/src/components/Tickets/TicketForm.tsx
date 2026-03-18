@@ -30,7 +30,7 @@ const TicketForm = ({ onClose, onSuccess }: TicketFormProps) => {
     };
 
     try {
-      await axios.post('http://localhost:3001/api/tickets', newTicket);
+      await axios.post('/api/tickets', newTicket);
       onSuccess();
       onClose();
     } catch (error) {

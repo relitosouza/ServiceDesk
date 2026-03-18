@@ -19,7 +19,7 @@ const RecentTickets = () => {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/tickets');
+        const response = await axios.get('/api/tickets');
         // Transform sheets data to our interface
         const formattedTickets = response.data.slice(1).map((row: any) => ({
           id: row[0],
