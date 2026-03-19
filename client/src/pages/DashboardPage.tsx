@@ -14,14 +14,16 @@ interface DashboardStats {
 const DashboardPage = () => {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
         const response = await axios.get('/api/tickets/stats');
         setStats(response.data);
-      } catch (error) {
-        console.error('Error fetching dashboard stats:', error);
+      } catch (err: any) {
+        console.error('Error fetching dashboard stats:', err);
+        setError(err.response?.data?.error || err.message || 'Falha ao conectar com o servidor');
       } finally {
         setLoading(false);
       }
@@ -29,9 +31,25 @@ const DashboardPage = () => {
     fetchStats();
   }, []);
 
-  if (loading || !stats) return (
+  if (loading) return (
     <div className="flex items-center justify-center p-20">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+    </div>
+  );
+
+  if (error) return (
+    <div className="flex flex-col items-center justify-center p-20 text-center">
+      <div className="bg-red-50 dark:bg-red-900/20 p-8 rounded-2xl border border-red-100 dark:border-red-800 max-w-md">
+        <span className="material-symbols-outlined text-red-500 text-5xl mb-4">error</span>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Erro ao Carregar Dashboard</h2>
+        <p className="text-slate-500 dark:text-slate-400 mb-6">{error}</p>
+        <button 
+          onClick={() => window.location.reload()}
+          className="bg-primary text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-all"
+        >
+          Tentar Novamente
+        </button>
+      </div>
     </div>
   );
 
