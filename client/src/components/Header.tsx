@@ -1,7 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -44,6 +45,12 @@ const Header = () => {
           </label>
         </div>
         <div className="flex gap-2">
+          <button 
+            onClick={() => navigate('/tickets/new')}
+            className="bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-all hidden sm:block"
+          >
+            Novo Ticket
+          </button>
           <button className="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
             <span className="material-symbols-outlined">notifications</span>
           </button>
