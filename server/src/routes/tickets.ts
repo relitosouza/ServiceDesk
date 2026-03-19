@@ -15,12 +15,23 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
+    console.log('Received POST /api/tickets request');
+    console.log('Body:', JSON.stringify(req.body));
+    
     const { id, date, email, title, category, urgency, description } = req.body;
+    
+    if (!title || !category || !description) {
+      console.error('Missing required fields in request body');
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
     await appendRow('Tickets!A:J', [id, date, email, title, category, urgency, description, 'Aberto', '', '']);
+    console.log('Successfully added ticket to sheet');
     res.status(201).json({ success: true });
-  } catch (error) {
-    console.error('Failed to create ticket:', error);
-    res.status(500).json({ error: 'Failed to create ticket' });
+  } catch (error: any) {
+    console.error('Failed to create ticket:', error.message);
+    if (error.response) console.error('Google API Response:', error.response.data);
+    res.status(500).json({ error: 'Failed to create ticket', details: error.message });
   }
 });
 
