@@ -1,12 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import TicketsPage from './pages/TicketsPage';
-
-const DashboardPlaceholder = () => (
-  <main className="flex flex-col flex-1 px-4 lg:px-10 py-8 max-w-[1280px] mx-auto w-full">
-    <h1 className="text-3xl font-black">Dashboard (Em breve...)</h1>
-  </main>
-);
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   return (
@@ -14,7 +9,7 @@ function App() {
       <div className="layout-container flex h-full grow flex-col">
         <Header />
         <Routes>
-          <Route path="/" element={<DashboardPlaceholder />} />
+          <Route path="/" element={<DashboardPage />} />
           <Route path="/tickets" element={<TicketsPage />} />
         </Routes>
       </div>

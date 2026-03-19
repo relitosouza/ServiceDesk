@@ -1,14 +1,34 @@
+import { Link, useLocation } from 'react-router-dom';
+
 const Header = () => {
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
+
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-10 py-3 sticky top-0 z-50">
       <div className="flex items-center gap-8">
-        <div className="flex items-center gap-3 text-primary">
+        <Link to="/" className="flex items-center gap-3 text-primary">
           <span className="material-symbols-outlined text-3xl font-bold">support_agent</span>
           <h2 className="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Service Desk</h2>
-        </div>
+        </Link>
         <nav className="hidden md:flex items-center gap-9">
-          <a className="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
-          <a className="text-primary text-sm font-bold border-b-2 border-primary py-1" href="#">Tickets</a>
+          <Link 
+            to="/" 
+            className={`${
+              isActive('/') ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 dark:text-slate-400 font-medium'
+            } text-sm py-1 transition-colors hover:text-primary`}
+          >
+            Dashboard
+          </Link>
+          <Link 
+            to="/tickets" 
+            className={`${
+              isActive('/tickets') ? 'text-primary font-bold border-b-2 border-primary' : 'text-slate-600 dark:text-slate-400 font-medium'
+            } text-sm py-1 transition-colors hover:text-primary`}
+          >
+            Tickets
+          </Link>
           <a className="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Clientes</a>
           <a className="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Relatórios</a>
         </nav>
