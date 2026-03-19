@@ -17,7 +17,7 @@ const CreateTicketPage = () => {
     const newTicket = {
       id: `#${Math.floor(1000 + Math.random() * 9000)}`,
       date: new Date().toLocaleString('pt-BR'),
-      email: 'joao.silva@empresa.com', // Mocked for now
+      email: 'joao.silva@empresa.com', // Mocked user
       title,
       category,
       urgency: urgency.charAt(0).toUpperCase() + urgency.slice(1),
@@ -36,12 +36,12 @@ const CreateTicketPage = () => {
   };
 
   return (
-    <div className="flex flex-col flex-1 bg-background-light dark:bg-background-dark min-h-screen">
+    <div className="flex flex-col flex-1 bg-background-light dark:bg-background-dark min-h-screen font-display antialiased">
       <main className="flex-1 px-6 lg:px-10 py-8 max-w-[1200px] mx-auto w-full">
         {/* Header Section */}
         <header className="mb-10">
-          <div className="flex items-center gap-2 text-primary mb-4 cursor-pointer hover:underline" onClick={() => navigate(-1)}>
-            <span className="material-symbols-outlined text-[20px]">arrow_back</span>
+          <div className="flex items-center gap-2 text-primary mb-4 cursor-pointer hover:underline group" onClick={() => navigate(-1)}>
+            <span className="material-symbols-outlined text-[20px] transition-transform group-hover:-translate-x-1">arrow_back</span>
             <span className="text-sm font-bold uppercase tracking-wider">Voltar para a lista</span>
           </div>
           <h1 className="text-[32px] font-black tracking-tight text-slate-900 dark:text-white leading-tight">Abrir Novo Chamado</h1>
@@ -60,7 +60,7 @@ const CreateTicketPage = () => {
                   type="text" 
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary px-4 text-lg font-medium text-slate-900 dark:text-white placeholder:text-slate-400" 
+                  className="w-full h-14 rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary px-4 text-lg font-medium text-slate-900 dark:text-white placeholder:text-slate-400 transition-all" 
                   placeholder="Ex: Não consigo acessar o servidor de arquivos"
                 />
               </div>
@@ -74,7 +74,7 @@ const CreateTicketPage = () => {
                       required
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full h-12 appearance-none rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary px-4 pr-10 text-slate-900 dark:text-white font-medium"
+                      className="w-full h-12 appearance-none rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary px-4 pr-10 text-slate-900 dark:text-white font-medium transition-all"
                     >
                       <option value="">Selecione...</option>
                       <option value="Hardware">Hardware / Equipamentos</option>
@@ -94,7 +94,7 @@ const CreateTicketPage = () => {
                     <select 
                       value={urgency}
                       onChange={(e) => setUrgency(e.target.value)}
-                      className="w-full h-12 appearance-none rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary px-4 pr-10 text-slate-900 dark:text-white font-medium"
+                      className="w-full h-12 appearance-none rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary px-4 pr-10 text-slate-900 dark:text-white font-medium transition-all"
                     >
                       <option value="baixa">Baixa (Rotina)</option>
                       <option value="media">Média (Atrasa o fluxo)</option>
@@ -112,7 +112,7 @@ const CreateTicketPage = () => {
                   required
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full min-h-[200px] rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary p-4 text-slate-900 dark:text-white resize-none" 
+                  className="w-full min-h-[200px] rounded-xl border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary p-4 text-slate-900 dark:text-white resize-none transition-all" 
                   placeholder="Descreva o que aconteceu, as etapas para reproduzir o erro e qualquer outra informação relevante..."
                 ></textarea>
               </div>
