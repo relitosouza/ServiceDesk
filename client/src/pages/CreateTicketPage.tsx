@@ -27,9 +27,11 @@ const CreateTicketPage = () => {
     try {
       await axios.post('/api/tickets', newTicket);
       navigate('/tickets');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error creating ticket:', error);
-      alert('Falha ao criar chamado. Verifique a conexão com o servidor.');
+      const msg = error?.response?.data?.details || error?.response?.data?.error || error?.message || 'Erro desconhecido';
+      const status = error?.response?.status ? ` [HTTP ${error.response.status}]` : '';
+      alert(`Falha ao criar chamado${status}:\n${msg}`);
     } finally {
       setSubmitting(false);
     }
