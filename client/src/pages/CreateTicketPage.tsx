@@ -30,7 +30,8 @@ const CreateTicketPage = () => {
     } catch (error: any) {
       console.error('Error creating ticket:', error);
       const msg = error?.response?.data?.details || error?.response?.data?.error || error?.message || 'Erro desconhecido';
-      alert(`Falha ao criar chamado:\n${msg}`);
+      const status = error?.response?.status ? ` [HTTP ${error.response.status}]` : '';
+      alert(`Falha ao criar chamado${status}:\n${msg}`);
     } finally {
       setSubmitting(false);
     }
